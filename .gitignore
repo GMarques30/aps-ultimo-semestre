@@ -37,3 +37,7 @@ Thumbs.db
 # Arquivos do Maven/Gradle
 *.class
 *.jar.original
+
+.classpath
+.project
+.settings
