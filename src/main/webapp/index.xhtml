@@ -24,24 +24,63 @@
             <div class="w-full max-w-lg space-y-8">
                 <div class="text-center">
                     <h1 class="text-4xl font-bold tracking-tight text-white sm:text-5xl">Upload Donation Data</h1>
-                    <p class="mt-4 text-lg text-[#9eb7a8]">Upload a .txt file containing simulated donation
-                        data to update the system. Ensure the file format is correct before uploading.</p>
+                    <p class="mt-4 text-lg text-[#9eb7a8]">Upload a .txt file containing simulated donation data to
+                        update the system. Ensure the file format is correct before uploading.</p>
                 </div>
-                <h:form enctype="multipart/form-data"
+                <h:form id="form" enctype="multipart/form-data"
                     class="bg-[#1c2620] p-8 rounded-lg border border-[#3d5245] space-y-6"
                 >
                     <div class="relative">
-                        <p:fileUpload id="file-upload" value="#{donationBean.file}" mode="simple" />
+                        <p:fileUpload id="file-upload" value="#{donationBean.file}" mode="simple" style="display: none;" />
+                        <label onclick="document.getElementById('form:file-upload').click();"
+                            class="relative flex justify-center w-full h-32 px-6 pt-5 pb-6 border-2 border-dashed border-[#3d5245] rounded-md cursor-pointer hover:border-[var(--primary-color)]"
+                            for="file-upload"
+                        >
+                            <div class="space-y-1 text-center">
+                                <span class="material-symbols-outlined text-4xl text-[#9eb7a8]"> cloud_upload </span>
+                                <div class="flex text-sm text-[#9eb7a8]">
+                                    <p class="pl-1">Select your file here</p>
+                                </div>
+                                <p class="text-xs text-[#9eb7a8]">Only .txt files are allowed</p>
+                            </div>
+                        </label>
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                            <span class="text-sm font-medium text-white" id="file-name"></span>
+                        </div>
                     </div>
                     <h:commandButton value="Process Donations" action="#{donationBean.upload}"
                         styleClass="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-bold text-[#111714] bg-[var(--primary-color)] hover:bg-opacity-80 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-color)] focus:ring-offset-[#111714] transition-colors"
                     >
-                        <f:ajax execute="@form" render="@form" />
                     </h:commandButton>
+                    <div class="flex items-center justify-center gap-2 pt-4 text-sm text-[#9eb7a8]" id="status">
+                        <span class="material-symbols-outlined"> info </span> <span>Status: No file uploaded</span>
+                    </div>
                 </h:form>
             </div>
         </div>
     </div>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+  const fileUpload = document.getElementById('form:file-upload');
+  const fileName = document.getElementById('file-name');
+  const status = document.getElementById('status');
+
+  fileUpload.addEventListener('change', (e) => {
+    const [file] = e.target.files;
+    if (file) {
+      fileName.textContent = file.name;
+      status.innerHTML = `
+        <span class="material-symbols-outlined text-green-500">check_circle</span>
+        <span class="text-green-400">Arquivo carregado com sucesso</span>
+      `;
+    } else {
+      fileName.textContent = '';
+      status.innerHTML = `
+        <span class="material-symbols-outlined">info</span>
+        <span>Status: Nenhum arquivo selecionado</span>
+      `;
+    }
+  });
+</script>
 </body>
 </html>
