@@ -6,15 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
-
-import javax.inject.Named;
-
 import org.primefaces.model.file.UploadedFile;
 
-import javax.enterprise.context.RequestScoped;
-
-@Named
+@ManagedBean
 @RequestScoped
 public class DonationBean implements Serializable {
 
