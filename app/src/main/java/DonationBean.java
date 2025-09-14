@@ -9,6 +9,8 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+
+import com.alves.currency_converter_lib.service.CurrencyConversionService;
 import org.primefaces.model.file.UploadedFile;
 
 @ManagedBean
@@ -18,6 +20,7 @@ public class DonationBean implements Serializable {
     private UploadedFile file;
     private List<Donation> donations = new ArrayList<>();
     private BigDecimal total = BigDecimal.ZERO;
+    CurrencyConversionService converter = new CurrencyConversionService();
 
     public void upload() {
         if (file == null) {
@@ -42,7 +45,7 @@ public class DonationBean implements Serializable {
                 if (parts.length == 2) {
                     String donor = parts[0].trim();
                     try {
-                        BigDecimal amount = new BigDecimal(parts[1].trim()).setScale(2);
+                        BigDecimal amount = converter.convertToBRL(parts[1].trim());
                         Donation donation = new Donation(donor, amount);
                         donations.add(donation);
                         print(donation);

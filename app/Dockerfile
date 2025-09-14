@@ -1,6 +1,7 @@
 FROM maven:3.8.5-openjdk-8 AS builder
 WORKDIR /app
 COPY . .
+COPY settings.xml /root/.m2/settings.xml
 RUN mvn clean package -DskipTests
 
 FROM jboss/wildfly:18.0.1.Final
