@@ -7,7 +7,7 @@
         <server>
             <id>github</id>
             <username>gb-alves03</username>
-            <password>${github.TOKEN_GITHUB}</password>
+            <password>${TOKEN_GITHUB}</password>
         </server>
     </servers>
 </settings>
