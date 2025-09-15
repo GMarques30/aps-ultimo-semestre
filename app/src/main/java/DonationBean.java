@@ -28,7 +28,10 @@ public class DonationBean implements Serializable {
     private List<Donation> donations = new ArrayList<>();
     private BigDecimal total = BigDecimal.ZERO;
     CurrencyConversionService converter = new CurrencyConversionService();
+<<<<<<< HEAD
 >>>>>>> 67aea12 (feat: add currency converter lib configurations and implementation)
+=======
+>>>>>>> 855adfb8961254b284eb5b0890b9fde3146b755a
 
     public void upload() {
         if (file == null) {
