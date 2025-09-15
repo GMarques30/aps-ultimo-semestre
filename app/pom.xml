@@ -65,11 +65,19 @@
 			<scope>provided</scope>
 		</dependency>
 
+<<<<<<< HEAD
 		<dependency>
 			<groupId>org.apache.httpcomponents.client5</groupId>
 			<artifactId>httpclient5</artifactId>
 			<version>5.3</version>
 		</dependency>
+=======
+        <dependency>
+            <groupId>com.alves</groupId>
+            <artifactId>currency-converter-lib</artifactId>
+            <version>1.0.1</version>
+        </dependency>
+>>>>>>> 67aea12 (feat: add currency converter lib configurations and implementation)
 	</dependencies>
 
 	<build>
@@ -86,4 +94,12 @@
 			</plugin>
 		</plugins>
 	</build>
+
+    <repositories>
+        <repository>
+            <id>github</id>
+            <url>https://maven.pkg.github.com/gb-alves03/currency-converter-library</url>
+        </repository>
+    </repositories>
+
 </project>
