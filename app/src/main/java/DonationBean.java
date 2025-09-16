@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -51,7 +52,7 @@ public class DonationBean implements Serializable {
                     String donor = parts[0].trim();
                     try {
                         BigDecimal amount = converter.convertToBRL(parts[1].trim());
-                        Donation donation = new Donation(donor, amount);
+                        Donation donation = new Donation(donor, amount.setScale(2, RoundingMode.HALF_EVEN));
                         
                         ResourceBundle bundle = ResourceBundle.getBundle("application");
                         String aggregatorUrl = bundle.getString("AGGREGATOR_URL");

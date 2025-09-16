@@ -16,4 +16,4 @@ services:
       context: ../aggregator
     container_name: aggregator
     ports:
-      - "8080:8080"
+      - "8083:8080"
