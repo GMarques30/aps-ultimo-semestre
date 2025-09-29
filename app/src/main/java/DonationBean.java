@@ -12,7 +12,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
-import com.alves.currency_converter_lib.service.CurrencyConversionService;
+import com.alves.currency_converter_lib.service.CurrencyConversionServiceImpl;
 import org.primefaces.model.file.UploadedFile;
 
 @ManagedBean
@@ -28,7 +28,7 @@ public class DonationBean implements Serializable {
     
     private List<Donation> donations = new ArrayList<>();
     private BigDecimal total = BigDecimal.ZERO;
-    CurrencyConversionService converter = new CurrencyConversionService();
+    CurrencyConversionServiceImpl converter = new CurrencyConversionServiceImpl();
 
     public void upload() {
         if (file == null) {
