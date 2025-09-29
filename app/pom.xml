@@ -74,7 +74,7 @@
         <dependency>
             <groupId>com.alves</groupId>
             <artifactId>currency-converter-lib</artifactId>
-            <version>1.0.3-SNAPSHOT</version>
+            <version>1.0.3</version>
         </dependency>
 	</dependencies>
 
